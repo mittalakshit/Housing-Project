@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<!--
+	Hielo by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Housing Project</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo"><a href="index.html">Housing <span>Project</span></a></div>
+				<a href="#menu">Menu</a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="generic.html">Inputs</a></li>
+					
+				</ul>
+			</nav>
+
+		<!-- One -->
+			<section id="One" class="wrapper style3">
+				<div class="inner">
+					<header class="align-center">
+						<p>To Predict the Price of your house</p>
+						<h2>Enter the details</h2>
+					</header>
+				</div>
+			</section>
+
+		<!-- Two -->
+			<section id="two" class="wrapper style2">
+				<div class="inner">
+					<div class="box">
+						<div class="content">
+							<input type="text"id="lotsize" placeholder="Enter area of house"/>
+            
+             <input type="text" id="bathrms" placeholder="Enter How many bathrooms You want"/>
+                <select id ="stories">
+                    <option disabled selected>Select number of floors</option>
+                <option value="1">1 Floor</option>
+                <option value="2">2 Floor</option>
+                <option value="3">3 Floor</option>
+                <option value="4">4 Floor</option></select>
+                
+                <select id ="driveway"><option disabled selected>Do You need a driveway ?</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>    
+                </select>
+                
+                <select id ="recroom" >
+                <option disabled selected>Do you want Recretion room?</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>    
+                </select>
+                
+                <select id ="fullbase">
+                <option disabled selected>Full Basements?</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>    
+                </select>
+                
+                <select id ="gashw" >
+                <option disabled selected>Gas Hot Water?</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>    
+                </select>
+                
+                <select id ="airco" >
+                <option disabled selected>Do you need Air conditioner?</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>    
+                </select>
+                
+                <input type="text" id="garagepl" placeholder="Enter  Garage Places"/>
+                
+                <select id ="prefarea" >
+                <option disabled selected>Do you want house in Prefer Area of city?</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>    </select>
+				  
+                  <br> <br>
+                  <button type="button" id="pred_btn">Pred</button>
+					
+				  <h3 id="result"></h3>	
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+				</div>
+				<div class="copyright">
+					&copy; Creator- Akshit Mittal. All rights reserved.
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+	
+	
+	
+	
+	<script>
+	$(document).ready(function(){
+          $("#pred_btn").click(function(){
+            var lotsize =$("#lotsize").val(); 
+            var bathrms =$("#bathrms").val(); 
+              var stories =$("#stories option:selected").val();
+              var driveway=$("#driveway option:selected").val();
+              var recroom =$("#recroom option:selected").val();
+              var fullbase =$("#fullbase option:selected").val();
+              var gashw =$("#gashw option:selected").val();
+              var airco =$("#airco option:selected").val();
+              var garagepl =$("#garagepl").val();
+              var prefarea =$("#prefarea option:selected").val();
+              
+              $.get("predict.php",{"lotsize":lotsize,"bathrms":bathrms,"stories":stories,"driveway":driveway,"recroom":recroom,"fullbase":fullbase,"gashw":gashw,"airco":airco,"garagepl":garagepl,"prefarea":prefarea},function(response){
+                  $("#result").html(response)
+                             
+              });
+          }); 
+           
+       });
+	
+	
+	
+	
+	</script>
+</html>
